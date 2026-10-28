@@ -1,36 +1,26 @@
 export default function decorate(block) {
-  block.classList.add('hero-loaded');
-
-  const heading = document.createElement('h1');
-  heading.textContent = 'Welcome to My Custom Page';
-
-  const description = document.createElement('p');
-  description.textContent = 'This hero section is rendered using a custom EDS block.';
+  const heading = block.querySelector('h1, h2, h3');
+  const description = block.querySelector('p');
+  const picture = block.querySelector('picture');
 
   block.innerHTML = '';
-  block.append(heading, deexport default function decorate(block) {
-    const rows = [...block.children];
 
-    const title = rows[0]?.textContent?.trim() || '';
-    const description = rows[1]?.textContent?.trim() || '';
-    const picture = block.querySelector('picture');
+  const hero = document.createElement('div');
+  hero.className = 'hero-banner';
 
-    block.innerHTML = '';
+  if (picture) {
+    hero.appendChild(picture);
+  }
 
-    const hero = document.createElement('div');
-    hero.className = 'hero-loaded';
+  const content = document.createElement('div');
+  content.className = 'hero-content';
 
-    hero.innerHTML = `
-    <div class="hero-overlay">
-      <h1>${title}</h1>
-      <p>${description}</p>
-    </div>
+  content.innerHTML = `
+    <h1>${heading ? heading.textContent : 'Welcome'}</h1>
+    <p>${description ? description.textContent : ''}</p>
+    <a href="#" class="hero-btn">Learn More</a>
   `;
 
-    if (picture) {
-      hero.prepend(picture);
-    }
-
-    block.append(hero);
-  }scription);
+  hero.appendChild(content);
+  block.appendChild(hero);
 }

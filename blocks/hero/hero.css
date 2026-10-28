@@ -1,35 +1,54 @@
-.hero-loaded {
+.hero-banner {
     position: relative;
+    min-height: 600px;
     overflow: hidden;
     border-radius: 16px;
 }
 
-.hero-loaded picture img {
+.hero-banner picture,
+.hero-banner img {
     width: 100%;
     height: 600px;
+    display: block;
     object-fit: cover;
 }
 
-.hero-overlay {
+.hero-content {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,.45);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
     text-align: center;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 16px;
     color: white;
 }
 
-.hero-overlay h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
+.hero-content p {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin-bottom: 24px;
 }
 
-.hero-overlay p {
-    font-size: 1.4rem;
-    max-width: 700px;
+.hero-btn {
+    padding: 14px 28px;
+    background: #1473e6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.hero-btn:hover {
+    background: #0d66d0;
 }
