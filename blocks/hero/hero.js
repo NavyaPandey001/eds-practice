@@ -1,26 +1,39 @@
 export default function decorate(block) {
-  const heading = block.querySelector('h1, h2, h3');
-  const description = block.querySelector('p');
-  const picture = block.querySelector('picture');
+  const slides = [...block.children];
 
-  block.innerHTML = '';
+  slides.forEach((slide, index) => {
+    slide.classList.add('slide');
 
-  const hero = document.createElement('div');
-  hero.className = 'hero-banner';
+    if (index === 0) {
+      slide.classList.add('active');
+    }
+  });
 
-  if (picture) {
-    hero.appendChild(picture);
+  let current = 0;
+
+  const prev = document.createElement('button');
+  prev.innerHTML = '&#10094;';
+
+  const next = document.createElement('button');
+  next.innerHTML = '&#10095;';
+
+  prev.className = 'carousel-btn prev';
+  next.className = 'carousel-btn next';
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove('active'));
+    slides[index].classList.add('active');
   }
 
-  const content = document.createElement('div');
-  content.className = 'hero-content';
+  prev.addEventListener('click', () => {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+  });
 
-  content.innerHTML = `
-    <h1>${heading ? heading.textContent : 'Welcome'}</h1>
-    <p>${description ? description.textContent : ''}</p>
-    <a href="#" class="hero-btn">Learn More</a>
-  `;
+  next.addEventListener('click', () => {
+    current = (current + 1) % slides.length;
+    showSlide(current);
+  });
 
-  hero.appendChild(content);
-  block.appendChild(hero);
+  block.append(prev, next);
 }
