@@ -1,33 +1,35 @@
-.hero {
+.hero-loaded {
     position: relative;
     overflow: hidden;
     border-radius: 16px;
 }
 
-.hero picture img {
+.hero-loaded picture img {
     width: 100%;
     height: 600px;
     object-fit: cover;
 }
 
-.hero-content {
+.hero-overlay {
     position: absolute;
     inset: 0;
+    background: rgba(0,0,0,.45);
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+
     text-align: center;
-    background: rgba(0,0,0,.45);
+    color: white;
 }
 
-.hero h1 {
+.hero-overlay h1 {
     font-size: 4rem;
     margin-bottom: 20px;
 }
 
-.hero p {
-    font-size: 1.3rem;
+.hero-overlay p {
+    font-size: 1.4rem;
     max-width: 700px;
 }
