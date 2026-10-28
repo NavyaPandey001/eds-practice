@@ -1,16 +1,12 @@
 export default function decorate(block) {
-  const picture = block.querySelector('picture');
-  const title = block.querySelector('h1, h2, h3');
-  const text = block.querySelector('p');
+  block.classList.add('hero-loaded');
+
+  const heading = document.createElement('h1');
+  heading.textContent = 'Welcome to My Custom Page';
+
+  const description = document.createElement('p');
+  description.textContent = 'This hero section is rendered using a custom EDS block.';
 
   block.innerHTML = '';
-
-  const hero = document.createElement('div');
-  hero.className = 'hero-content';
-
-  if (picture) hero.append(picture);
-  if (title) hero.append(title);
-  if (text) hero.append(text);
-
-  block.append(hero);
+  block.append(heading, description);
 }
